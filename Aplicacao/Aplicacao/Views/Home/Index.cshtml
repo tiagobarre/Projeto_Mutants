@@ -1,0 +1,148 @@
+﻿@model UsuariosModel
+
+<br />
+
+
+<form method="post" style="text-align:center">
+
+    <button name="metodo" value="carregar" class="btn btn-outline-success">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M3.5 6a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-8a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 1 0-1h2A1.5 1.5 0 0 1 14 6.5v8a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-8A1.5 1.5 0 0 1 3.5 5h2a.5.5 0 0 1 0 1h-2z" />
+            <path fill-rule="evenodd" d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+        </svg>
+        Baixar Dados em tabela
+    </button>
+    <button name="metodo" value="visualizarJSON" class="btn btn-outline-dark">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M3.5 6a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-8a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 1 0-1h2A1.5 1.5 0 0 1 14 6.5v8a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-8A1.5 1.5 0 0 1 3.5 5h2a.5.5 0 0 1 0 1h-2z" />
+            <path fill-rule="evenodd" d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+        </svg>
+        Baixar Dados em JSON
+    </button>
+    <button name="metodo" value="logs" class="btn btn-outline-danger">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M3.5 6a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-8a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 1 0-1h2A1.5 1.5 0 0 1 14 6.5v8a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-8A1.5 1.5 0 0 1 3.5 5h2a.5.5 0 0 1 0 1h-2z" />
+            <path fill-rule="evenodd" d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+        </svg>
+        Baixar Logs
+    </button>
+    <button name="metodo" value="salvar" class="btn btn-outline-primary" onclick="salvar()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hdd" viewBox="0 0 16 16">
+            <path d="M4.5 11a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zM3 10.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
+            <path d="M16 11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V9.51c0-.418.105-.83.305-1.197l2.472-4.531A1.5 1.5 0 0 1 4.094 3h7.812a1.5 1.5 0 0 1 1.317.782l2.472 4.53c.2.368.305.78.305 1.198V11zM3.655 4.26L1.592 8.043C1.724 8.014 1.86 8 2 8h12c.14 0 .276.014.408.042L12.345 4.26a.5.5 0 0 0-.439-.26H4.094a.5.5 0 0 0-.44.26zM1 10v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1z" />
+        </svg>
+        Salvar Dados no DB
+    </button>
+
+
+
+</form>
+
+<br />
+
+
+<div class="container">
+    @ViewBag.ExibirJSON
+</div>
+
+@if(@ViewBag.DesabilitarTabela == "")
+{
+<table class="table table-hover" style="display:@ViewBag.DesabilitarTabela">
+    <thead>
+        <tr style="text-align:center;  font-size: 12px; background-color:darkslategray; color:white">
+            <td><strong>ID</strong></td>
+            <td><strong>NAME</strong> </td>
+            <td><strong>USERNAME</strong></td>
+            <td><strong>EMAIL</strong></td>
+            <td><strong>ADRESS</strong></td>
+            <td><strong>PHONE</strong></td>
+            <td><strong>WEBSITE</strong></td>
+            <td><strong>COMPANY</strong></td>
+
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in (List<UsuariosModel>)ViewBag.ListaClientes)
+        {
+
+            <tr style="font-size: 11px">
+                <td>@item.id.ToString()</td>
+                <td>@item.name.ToString()</td>
+                <td>@item.username.ToString()</td>
+                <td>@item.email.ToString()</td>
+                <td>
+                    @item.address.street.ToString() -
+                    @item.address.suite.ToString() <br />
+                    @item.address.city.ToString() -
+                    @item.address.zipcode.ToString() - <br />
+                    Lat: @item.address.geo.lat.ToString()
+                    Lnt: @item.address.geo.lng.ToString()
+
+                </td>
+                <td>@item.phone.ToString()</td>
+                <td>@item.website.ToString()</td>
+                <td>
+                    @item.company.name.ToString() <br />
+                    @item.company.catchPhrase.ToString() <br />
+                    @item.company.bs.ToString()
+                </td>
+            </tr>
+        }
+
+
+
+
+    </tbody>
+</table>
+}
+
+
+@if(ViewBag.DesabilitarTabelaLog == "")
+{
+<table class="table table-hover" >
+    <thead>
+        <tr style="text-align:center;  font-size: 12px; background-color:darkslategray; color:white">
+            <td><strong>DATA</strong></td>
+            <td><strong>DESCRICAO</strong> </td>
+
+
+        </tr>
+    </thead>
+
+    <tbody>
+
+
+
+        @foreach (var item2 in (List<UsuariosModel>)ViewBag.ListaClientes)
+        {
+
+            <tr style="font-size: 11px">
+                <td style="text-align:center">@item2.data.ToString()</td>
+                <td>@item2.descricao.ToString()</td>
+
+            </tr>
+        }
+
+    </tbody>
+</table>
+}
+
+
+
+
+<script>
+    function salvar() {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Dados salvos com sucesso',
+            showConfirmButton: false,
+            timer: 15000
+        })
+    }
+
+
+</script>
+

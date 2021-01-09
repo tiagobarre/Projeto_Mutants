@@ -1,0 +1,3 @@
+C:\Curso\Solucao-Senior-Mutant\Aplicacao\Dominio\Dominio\obj\Debug\netcoreapp3.1\Dominio.AssemblyInfoInputs.cache
+C:\Curso\Solucao-Senior-Mutant\Aplicacao\Dominio\Dominio\obj\Debug\netcoreapp3.1\Dominio.AssemblyInfo.cs
+C:\Curso\Solucao-Senior-Mutant\Aplicacao\Dominio\Dominio\obj\Debug\netcoreapp3.1\Dominio.csproj.CoreCompileInputs.cache
